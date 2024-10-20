@@ -7,7 +7,7 @@ set -euo pipefail
 # Update, Upgrade, and install packages
 apt-get update
 
-apt-get upgrade
+apt-get upgrade -y
 # shellcheck disable=SC2086
 DEBIAN_FRONTEND=noninteractive \
 apt-get install -y \
