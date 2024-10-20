@@ -3,9 +3,9 @@ FROM ${BASE_IMAGE}
 
 # hook into docker BuildKit --platform support
 # see https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
-ARG TARGETOS
-ARG TARGETARCH
-ARG TARGETVARIANT
+ARG TARGETOS=linux
+ARG TARGETARCH=amd
+ARG TARGETVARIANT=64
 
 # The following three arg/env vars get used by the platform specific "install-packages" script
 ARG EXTRA_DEB_PACKAGES=""
@@ -58,6 +58,9 @@ RUN curl -fsSL ${MC_HELPER_BASE_URL}/mc-image-helper-${MC_HELPER_VERSION}.tgz \
   | tar -C /usr/share -zxf - \
   && ln -s /usr/share/mc-image-helper-${MC_HELPER_VERSION}/bin/mc-image-helper /usr/bin
 
+#Upgrade one more time jic
+RUN apt update && apt upgrade -y
+
 VOLUME ["/data"]
 WORKDIR /data
 
@@ -78,3 +81,5 @@ RUN dos2unix /start* /auto/*
 
 ENTRYPOINT [ "/start" ]
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
+
+# v1.0.0.ue.18
