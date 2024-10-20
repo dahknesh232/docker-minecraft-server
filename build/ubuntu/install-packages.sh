@@ -22,13 +22,6 @@ echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.profile
 
 source ~/.profile
 
-go version
-
-
-
-
-
-
 # shellcheck disable=SC2086
 DEBIAN_FRONTEND=noninteractive \
 apt-get install -y \
