@@ -53,6 +53,7 @@ chmod +x /tmp/gosu
 cp /tmp/gosu.asc -C /usr/local/ && rm /tmp/gosu.asc
 cp /tmp/gosu -C /usr/local/ && rm /tmp/gosu
 ln -s /usr/local/gosu /usr/sbin/gosu
+ln -s /usr/local/gosu /usr/local/sbin/gosu
 
 # Download and install patched knockd
 curl -fsSL -o /tmp/knock.tar.gz https://github.com/Metalcape/knock/releases/download/0.8.1/knock-0.8.1-$TARGET.tar.gz
