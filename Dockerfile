@@ -3,7 +3,7 @@ FROM ${BASE_IMAGE}
 
 # hook into docker BuildKit --platform support
 # see https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
-ARG TARGETOS=ubuntu
+ARG TARGETOS=linux
 ARG TARGETARCH=amd
 ARG TARGETVARIANT=64
 
@@ -79,4 +79,4 @@ RUN dos2unix /start* /auto/*
 ENTRYPOINT [ "/start" ]
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
 
-# v1.0.0.ue.9
+# v1.0.0.ue.10
