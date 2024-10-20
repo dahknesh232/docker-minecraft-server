@@ -9,21 +9,6 @@ apt-get update
 
 apt-get upgrade -y
 
-#Remove existing Go
-apt remove golang golang-go
-
-rm -rf /usr/local/go
-
-wget https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
-
-apt install tar
-
-tar -C /usr/local -xzf go1.23.2.linux-amd64.tar.gz
-
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.profile
-
-source ~/.profile
-
 # shellcheck disable=SC2086
 DEBIAN_FRONTEND=noninteractive \
 apt-get install -y \
@@ -55,6 +40,13 @@ apt-get install -y git-lfs
 
 # Clean up APT when done
 apt-get clean
+
+#Remove existing Go and install patched version
+apt remove golang golang-go
+rm -rf /usr/local/go
+curl -fsSL -o /tmp/go.tar.gz https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
+tar -xf /tmp/go.tar.gz -C /usr/local/ && rm /tmp/go.tar.gz
+
 
 # Download and install patched knockd
 curl -fsSL -o /tmp/knock.tar.gz https://github.com/Metalcape/knock/releases/download/0.8.1/knock-0.8.1-$TARGET.tar.gz

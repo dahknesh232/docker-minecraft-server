@@ -3,9 +3,9 @@ FROM ${BASE_IMAGE}
 
 # hook into docker BuildKit --platform support
 # see https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
-ARG TARGETOS
-ARG TARGETARCH
-ARG TARGETVARIANT
+ARG TARGETOS=ubuntu
+ARG TARGETARCH=amd
+ARG TARGETVARIANT=64
 
 # The following three arg/env vars get used by the platform specific "install-packages" script
 ARG EXTRA_DEB_PACKAGES=""
@@ -79,4 +79,4 @@ RUN dos2unix /start* /auto/*
 ENTRYPOINT [ "/start" ]
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
 
-# v1.0.0.ue.8
+# v1.0.0.ue.9
