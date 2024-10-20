@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=eclipse-temurin:21-jre
+ARG BASE_IMAGE=eclipse-temurin:23-jre
 FROM ${BASE_IMAGE}
 
 # hook into docker BuildKit --platform support
@@ -78,3 +78,5 @@ RUN dos2unix /start* /auto/*
 
 ENTRYPOINT [ "/start" ]
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
+
+# v1.0.0.ue.1
