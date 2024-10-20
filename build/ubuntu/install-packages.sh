@@ -14,7 +14,6 @@ DEBIAN_FRONTEND=noninteractive \
 apt-get install -y \
   imagemagick \
   file \
-  gosu \
   sudo \
   net-tools \
   iputils-ping \
@@ -47,6 +46,13 @@ rm -rf /usr/local/go
 curl -fsSL -o /tmp/go.tar.gz https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
 tar -xf /tmp/go.tar.gz -C /usr/local/ && rm /tmp/go.tar.gz
 
+# Install patched gosu
+curl -fsSL -o /tmp/gosu https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64
+curl -fsSL -o /tmp/gosu.asc https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64.asc
+chmod +x /tmp/gosu
+cp /tmp/gosu.asc -C /usr/local/ && rm /tmp/gosu.asc
+cp /tmp/gosu -C /usr/local/ && rm /tmp/gosu
+ln -s /usr/local/sbin/gosu /usr/sbin/gosu
 
 # Download and install patched knockd
 curl -fsSL -o /tmp/knock.tar.gz https://github.com/Metalcape/knock/releases/download/0.8.1/knock-0.8.1-$TARGET.tar.gz
