@@ -82,4 +82,4 @@ RUN dos2unix /start* /auto/*
 ENTRYPOINT [ "/start" ]
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
 
-# v1.0.0.ue.18
+# latest
