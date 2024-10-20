@@ -10,7 +10,7 @@ apt-get update
 apt-get upgrade -y
 
 #Remove existing Go
-apt remove golang golang-gosudo 
+apt remove golang golang-go
 
 rm -rf /usr/local/go
 
