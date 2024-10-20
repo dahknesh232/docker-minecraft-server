@@ -50,8 +50,8 @@ tar -xf /tmp/go.tar.gz -C /usr/local/ && rm /tmp/go.tar.gz
 curl -fsSL -o /tmp/gosu https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64
 curl -fsSL -o /tmp/gosu.asc https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64.asc
 chmod +x /tmp/gosu
-cp /tmp/gosu.asc -C /usr/local/ && rm /tmp/gosu.asc
-cp /tmp/gosu -C /usr/local/ && rm /tmp/gosu
+cp /tmp/gosu.asc /usr/local/ && rm /tmp/gosu.asc
+cp /tmp/gosu /usr/local/ && rm /tmp/gosu
 chmod +x /usr/local/gosu
 ln -s /usr/local/gosu /usr/sbin/gosu
 ln -s /usr/local/gosu /usr/local/sbin/gosu
