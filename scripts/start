@@ -4,8 +4,8 @@
 . "${SCRIPTS:-/}start-utils"
 
 # The Dockerfile ENVs take precedence here, but defaulting for testing consistency
-: "${UID:=1000}"
-: "${GID:=1000}"
+: "${UID:=1002}"
+: "${GID:=1002}"
 : "${SKIP_CHOWN_DATA:=false}"
 
 umask "${UMASK:=0002}"
